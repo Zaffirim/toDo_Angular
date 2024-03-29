@@ -1,0 +1,27 @@
+<div class="mt-5">
+    <label for="nuovoTitolo">Nuovo Todo</label>
+    <input type="text" id="nuovoTitolo" class="ms-2" />
+    <button type="button" class="btn btn-primary btn-sm ms-2">➕</button>
+</div>
+
+<h1>ToDo:</h1>
+<div class="container mt-5">
+    <div class="row">
+        <div
+            class="col-12 mb-4 d-flex align-items-center text-start"
+            *ngFor="let todo of todos"
+            [ngClass]="{
+                completed: todo.completed,
+                'not-completed': !todo.completed
+            }"
+        >
+            <div class="col-1">
+                <input type="checkbox" [checked]="todo.completed" />
+            </div>
+            <div class="col-11">
+                <p>{{ todo.todo }}</p>
+                <p>Assigned to: {{ getUserName(todo.id) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
